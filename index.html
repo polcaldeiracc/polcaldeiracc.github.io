@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Political Biography - César Caldeira</title>
+    
+    <!-- IBM Plex Sans & Serif Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Special Fonts for Opposition -->
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Russo+One&family=Lusitana:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Outfit Font for Membership Card -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"IBM Plex Sans"', 'sans-serif'],
+                        serif: ['"IBM Plex Serif"', 'serif'],
+                        mono: ['"IBM Plex Mono"', 'monospace'],
+                        outfit: ['"Outfit"', 'sans-serif'],
+                        fascism: ['"UnifrakturMaguntia"', 'cursive'],
+                        communism: ['"Russo One"', 'sans-serif'],
+                        populism: ['"Lusitana"', 'serif'],
+                    },
+                    colors: {
+                        'carbon-g100': '#161616', 
+                        'carbon-g90': '#262626',
+                        'carbon-g80': '#393939',
+                        'carbon-g70': '#525252',
+                        'carbon-g60': '#6f6f6f',
+                        'carbon-g30': '#c6c6c6',
+                        'carbon-g20': '#e0e0e0',
+                        'carbon-g10': '#f4f4f4',
+                        'carbon-white': '#ffffff',
+                        'accent': '#69A280', 
+                        'accent-hover': '#568b6b',
+                        'party': '#00abe4',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #161616;
+        }
+        
+        * {
+            border-radius: 0 !important;
+        }
+
+        /* Exception for the membership card */
+        .membership-card {
+            border-radius: 1rem !important;
+        }
+        
+        /* Allow specific shapes inside the card */
+        .membership-card .shape-circle {
+            border-radius: 50% !important;
+        }
+
+        /* MUSEUM FRAMES */
+        .frame-gold {
+            border: 12px solid #b8860b;
+            outline: 2px solid #8b6508;
+            box-shadow: 
+                inset 0 0 20px rgba(0,0,0,0.5),
+                0 10px 20px rgba(0,0,0,0.3);
+            background-color: #1a1a1a;
+            padding: 4px;
+        }
+        
+        .frame-wood {
+            border: 16px solid #3e2723;
+            box-shadow: 
+                inset 0 0 10px rgba(0,0,0,0.8),
+                0 10px 25px rgba(0,0,0,0.4);
+            outline: 1px solid #1a100e;
+            background-color: #000;
+            padding: 2px;
+        }
+
+        .frame-modern {
+            border: 16px solid #fdfdfd;
+            box-shadow: 
+                0 1px 3px rgba(0,0,0,0.1),
+                0 10px 30px rgba(0,0,0,0.15);
+            background-color: #fff;
+            padding: 12px;
+        }
+
+        /* NEW FRAMES */
+        .frame-black-minimal {
+            border: 12px solid #111;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background-color: #eee;
+            padding: 8px;
+        }
+
+        .frame-silver {
+            border: 12px solid #c0c0c0;
+            outline: 1px solid #999;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2), 0 5px 15px rgba(0,0,0,0.2);
+            background-color: #f0f0f0;
+            padding: 5px;
+        }
+
+        .frame-bronze {
+            border: 14px solid #cd7f32;
+            outline: 2px solid #8b4513;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.4), 0 8px 20px rgba(0,0,0,0.3);
+            background-color: #2a2a2a;
+            padding: 4px;
+        }
+
+        /* Museum Wall Background */
+        .museum-wall {
+            background-color: #ffffff;
+        }
+
+        *:focus-visible {
+            outline: 2px solid #69A280;
+            outline-offset: -2px;
+        }
+
+        .card-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e0e0e0;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #161616;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .passport-label {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #6f6f6f;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .passport-value {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 400;
+            color: #161616;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        /* Custom Scale Styles */
+        .scale-track {
+            height: 2px;
+            width: 100%;
+            background-color: #c6c6c6;
+            position: relative;
+            margin-top: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .scale-tick {
+            position: absolute;
+            top: -4px;
+            width: 1px;
+            height: 10px;
+            background-color: #6f6f6f;
+        }
+
+        .scale-marker {
+            position: absolute;
+            top: -6px;
+            width: 12px;
+            height: 12px;
+            background-color: #69A280;
+            transform: translateX(-50%);
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 0 1px #69A280;
+        }
+
+        .accordion-content {
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 2000px;
+            opacity: 1;
+        }
+
+        .accordion-icon {
+            transition: transform 0.2s ease;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Modal Transitions */
+        .modal {
+            transition: opacity 0.2s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Redaction Style */
+        .redacted {
+            background-color: currentColor;
+            color: currentColor;
+            transition: all 0.2s ease;
+            cursor: help;
+            padding: 0 2px;
+            border-radius: 2px;
+            user-select: none;
+        }
+        .redacted:hover {
+            background-color: transparent;
+            color: inherit;
+            background-color: #e0e0e0; /* Light highlight on reveal */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased px-6 md:px-12 bg-white relative">
+
+    <!-- System Notice Bar (Relative Flow) -->
+    <div id="system-notice" class="w-full bg-yellow-400 text-carbon-g100 px-4 py-2 text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest flex justify-center items-center relative z-[60] shadow-md">
+        <span class="mr-4 text-center">/// SYSTEM NOTICE: This page contains AI-generated text and is not representative of the final content.</span>
+        <button onclick="document.getElementById('system-notice').style.display='none'" class="hover:bg-black/10 p-1 rounded transition-colors absolute right-4">
+            <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+    </div>
+
+    <!-- Info Modal -->
+    <div id="infoModal" class="modal fixed inset-0 z-50 flex items-center justify-center px-4 bg-carbon-g100/90 backdrop-blur-sm">
+        <div class="bg-white max-w-lg w-full border border-carbon-g20 shadow-2xl relative">
+            <div class="bg-carbon-g10 p-4 border-b border-carbon-g20 flex justify-between items-center">
+                <h3 class="font-mono text-xs font-bold uppercase tracking-widest text-carbon-g60">Statement of Purpose</h3>
+                <button onclick="toggleInfo()" class="text-carbon-g60 hover:text-accent transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="p-8">
+                <p class="font-serif text-lg leading-relaxed text-carbon-g80">
+                    "Why do I share all of this? I believe in transparency: one's beliefs, when in politics, should be clear to the general public. That is not to say that orthodoxal adherence to these beliefs should dictate one's actions, however. Take this information as a general guide to my political mind, rather than a strict guiding ideology or irreverent set of values that impede any dialogue or progress."
+                </p>
+                <div class="mt-6 pt-6 border-t border-carbon-g20 text-right">
+                    <span class="font-mono text-xs text-carbon-g60 uppercase tracking-wider">— César Caldeira</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Central Vertical Axis (Full Height, Centered) -->
+    <div class="w-full max-w-[1600px] mx-auto border-x border-carbon-g20 min-h-screen flex flex-col bg-white shadow-none relative z-10">
+
+        <!-- Header -->
+        <header class="bg-white text-carbon-g100 w-full border-b border-carbon-g20 sticky top-0 z-40">
+            <div class="px-6 md:px-8 py-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 font-mono">
+                <div class="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
+                    <h1 class="text-xl tracking-wide uppercase font-bold text-carbon-g100">POLITICAL DOSSIER</h1>
+                    <span class="hidden md:inline text-carbon-g30">//</span>
+                    <span class="text-xl tracking-wide uppercase font-light text-carbon-g60">CÉSAR CALDEIRA</span>
+                    
+                    <!-- Info Trigger -->
+                    <button onclick="toggleInfo()" class="ml-2 text-carbon-g30 hover:text-accent transition-colors" title="Read Statement">
+                        <i data-lucide="info" class="w-5 h-5"></i>
+                    </button>
+                </div>
+                
+                <a href="https://cesar.caldeira.cc" class="text-xs text-accent hover:text-accent-hover font-bold border-b border-transparent hover:border-accent transition-colors">
+                    cesar.caldeira.cc
+                </a>
+            </div>
+        </header>
+
+        <!-- Main Content (Grid) -->
+        <main class="flex-grow grid grid-cols-1 md:grid-cols-12 border-b border-carbon-g20">
+            
+            <!-- 1. Identity Overview (Intelligence Report Style - High Contrast) -->
+            <div class="col-span-1 md:col-span-12 p-8 md:p-10 border-b border-carbon-g20 bg-white relative overflow-hidden">
+                <!-- Background 'Stamp' decoration -->
+                <div class="absolute -top-12 -right-12 border-8 border-red-600/10 p-6 transform -rotate-12 pointer-events-none select-none z-0">
+                    <span class="text-red-600/10 text-6xl md:text-9xl font-bold font-mono">CLASSIFIED</span>
+                </div>
+
+                <div class="relative z-10 font-mono">
+                    <!-- Report Metadata Header -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8 border-b-2 border-carbon-g100 pb-6">
+                        <div>
+                            <span class="block text-[9px] uppercase tracking-widest text-carbon-g60 mb-1">Subject Name</span>
+                            <span class="text-lg font-bold text-carbon-g100 uppercase tracking-tight">Caldeira, César</span>
+                        </div>
+                        <div>
+                            <span class="block text-[9px] uppercase tracking-widest text-carbon-g60 mb-1">Subject ID</span>
+                            <span class="text-sm font-medium text-carbon-g100">LIB-98-PT-EU-001</span>
+                        </div>
+                        <div>
+                            <span class="block text-[9px] uppercase tracking-widest text-carbon-g60 mb-1">Birth Year</span>
+                            <span class="text-sm font-medium text-carbon-g100">1998</span>
+                        </div>
+                        <div>
+                            <span class="block text-[9px] uppercase tracking-widest text-carbon-g60 mb-1">Age</span>
+                            <span class="text-sm font-medium text-carbon-g100" id="subject-age">--</span>
+                        </div>
+                    </div>
+
+                    <!-- Report Body -->
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                        <!-- Sidebar Status -->
+                        <div class="md:col-span-3 space-y-6">
+                            <div>
+                                <span class="block text-[9px] uppercase tracking-widest text-carbon-g60 mb-2">Clearance Level</span>
+                                <div class="inline-block border-2 border-red-900 text-red-900 px-2 py-1 text-[10px] font-bold uppercase tracking-wider transform -rotate-2 opacity-90 mix-blend-multiply">
+                                    * EYES ONLY *
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <span class="block text-[9px] uppercase tracking-widest text-carbon-g60 mb-2">Classification</span>
+                                <span class="text-xs font-bold text-blue-800 uppercase border-2 border-blue-800 px-2 py-1 inline-block transform rotate-1 opacity-90 mix-blend-multiply">Liberal Oppositionist</span>
+                            </div>
+
+                            <div>
+                                <span class="block text-[9px] uppercase tracking-widest text-carbon-g60 mb-2">Surveillance Status</span>
+                                <div class="inline-flex items-center border-2 border-emerald-800 text-emerald-800 px-2 py-1 text-[10px] font-bold uppercase tracking-wider transform -rotate-1 opacity-90 mix-blend-multiply">
+                                    <i data-lucide="eye" class="w-3 h-3 mr-2"></i>
+                                    ACTIVE MONITOR
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="block text-[9px] uppercase tracking-widest text-carbon-g60 mb-1">Affiliation</span>
+                                <span class="text-xs font-medium text-carbon-g100">Iniciativa Liberal</span>
+                            </div>
+                        </div>
+
+                        <!-- Narrative -->
+                        <div class="md:col-span-9">
+                            <span class="block text-[9px] uppercase tracking-widest text-carbon-g60 mb-3">Psychological Profile / Threat Assessment</span>
+                            <div class="text-sm text-carbon-g100 leading-relaxed border-l-2 border-carbon-g100 pl-6 max-w-3xl font-medium space-y-4">
+                                
+                                <div>
+                                    <span class="block font-bold uppercase underline decoration-2 underline-offset-4 text-xs mb-2">Ideological Pathology</span>
+                                    <p>
+                                        Subject exhibits a persistent dedication to the <span class="redacted">open society</span> and individual liberty. Analysis confirms active membership in <span class="redacted">Iniciativa Liberal</span>, with a focus on <span class="redacted">social rights</span> and the protection of minority viewpoints against majoritarian overreach.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <span class="block font-bold uppercase underline decoration-2 underline-offset-4 text-xs mb-2">Operational Pattern</span>
+                                    <p>
+                                        CALDEIRA aggressively advocates for <span class="redacted">transparency</span> in the allocation of public funds and rigorous scrutiny of state expenditure. Subject consistently promotes a <span class="redacted">rules-based international order</span>, prioritizing <span class="redacted">international liberalism</span> over isolationist national interests.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <span class="block font-bold uppercase underline decoration-2 underline-offset-4 text-xs mb-2">Final Assessment</span>
+                                    <p>
+                                        High probability of <span class="redacted">irreverent political participation</span> and disruption of the status quo. The subject's refusal to adhere to established dogma poses a challenge to static governance. Recommended Action: <span class="redacted">Continued Monitoring</span> of legislative proposals and public discourse.
+                                    </p>
+                                </div>
+
+                            </div>
+                            
+                            <p class="text-[10px] text-carbon-g30 mt-4 font-sans italic">
+                                * Disclaimer: The narrative style and content of this section are satirical. Duh.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Identity Passport Section -->
+            <div class="col-span-1 md:col-span-12 lg:col-span-6 p-8 bg-carbon-g10 border-b border-carbon-g20 lg:border-r flex justify-center">
+                <div class="w-full max-w-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 shadow-xl rounded-xl overflow-hidden">
+                    
+                    <!-- Left Side: Passport Cover -->
+                    <div class="bg-[#6b1c23] p-8 lg:p-6 xl:p-8 flex flex-col justify-center items-center text-center relative overflow-hidden">
+                        <!-- Decorative Border Lines -->
+                        <div class="absolute inset-0 border-4 border-[#e5c163]/20 m-4 rounded-lg pointer-events-none"></div>
+                        
+                        <div class="relative z-10">
+                            <i data-lucide="globe" class="w-12 h-12 lg:w-10 lg:h-10 xl:w-16 xl:h-16 text-[#e5c163] mb-4 lg:mb-3 xl:mb-6 mx-auto opacity-90"></i>
+                            <h3 class="font-serif text-2xl lg:text-xl xl:text-3xl font-bold text-[#e5c163] tracking-widest uppercase leading-tight" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.4);">
+                                Identity<br>Passport
+                            </h3>
+                            <div class="mt-4 w-8 h-1 bg-[#e5c163]/50 mx-auto rounded-full"></div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Data Page -->
+                    <div class="bg-[#fdfbf7] p-6 lg:p-5 xl:p-8 flex flex-col justify-center relative text-carbon-g100">
+                        <!-- Paper Texture Overlay -->
+                        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 20px 20px;"></div>
+                        
+                        <div class="relative z-10 space-y-6 lg:space-y-4 xl:space-y-6">
+                            
+                            <!-- Nationality -->
+                            <div>
+                                <span class="font-sans text-[9px] text-carbon-g60 uppercase tracking-widest mb-1.5 block font-bold">Nationality</span>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 shrink-0 border border-carbon-g30 p-0.5 bg-white shadow-sm rounded-sm">
+                                        <div class="w-full h-full" style="background: linear-gradient(135deg, #16a34a 50%, #dc2626 50%); opacity: 0.9;"></div>
+                                    </div>
+                                    <span class="font-mono text-sm lg:text-xs xl:text-sm font-bold text-carbon-g100 leading-tight">Portuguese Republic</span>
+                                </div>
+                            </div>
+
+                            <!-- National Affinity -->
+                            <div>
+                                <span class="font-sans text-[9px] text-carbon-g60 uppercase tracking-widest mb-1.5 block font-bold">National Affinity</span>
+                                <div class="space-y-2">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 shrink-0 border border-carbon-g30 p-0.5 bg-white shadow-sm rounded-sm">
+                                            <div class="w-full h-full" style="background: linear-gradient(135deg, #16a34a 50%, #dc2626 50%); opacity: 0.9;"></div>
+                                        </div>
+                                        <span class="font-mono text-xs text-carbon-g100">Portuguese</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 shrink-0 border border-carbon-g30 p-0.5 bg-white shadow-sm rounded-sm">
+                                            <div class="w-full h-full" style="background: linear-gradient(135deg, #16a34a 50%, #facc15 50%); opacity: 0.9;"></div>
+                                        </div>
+                                        <span class="font-mono text-xs text-carbon-g100">Brazilian</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Civic Identity -->
+                            <div>
+                                <span class="font-sans text-[9px] text-carbon-g60 uppercase tracking-widest mb-1.5 block font-bold">Civic Identity</span>
+                                <div class="space-y-2">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 shrink-0 border border-carbon-g30 p-0.5 bg-white shadow-sm rounded-sm">
+                                            <div class="w-full h-full" style="background: linear-gradient(135deg, #16a34a 50%, #dc2626 50%); opacity: 0.9;"></div>
+                                        </div>
+                                        <span class="font-mono text-[10px] xl:text-xs text-carbon-g100">PT Citizen</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-6 h-6 shrink-0 border border-carbon-g30 p-0.5 bg-white shadow-sm rounded-sm">
+                                            <div class="w-full h-full" style="background: linear-gradient(135deg, #2563eb 50%, #facc15 50%); opacity: 0.9;"></div>
+                                        </div>
+                                        <span class="font-mono text-[10px] xl:text-xs text-carbon-g100">EU Citizen</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SPECIAL SECTION: Membership Card -->
+            <div class="col-span-1 md:col-span-12 lg:col-span-6 p-8 bg-carbon-g10 border-b border-carbon-g20 flex justify-center">
+                <div class="membership-card w-full max-w-xl bg-party text-white shadow-xl overflow-hidden font-outfit relative flex flex-col justify-between">
+                    <!-- Decorative Circle -->
+                    <div class="absolute -right-12 -top-12 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none shape-circle"></div>
+                    <div class="absolute -left-12 -bottom-12 w-32 h-32 bg-black/5 rounded-full blur-xl pointer-events-none shape-circle"></div>
+
+                    <div class="p-8 lg:p-6 xl:p-8 relative z-10 flex flex-col h-full justify-between">
+                        <!-- Card Header -->
+                        <div class="flex justify-between items-start mb-8 lg:mb-4 xl:mb-8">
+                            <div>
+                                <div class="text-[10px] font-bold uppercase tracking-widest opacity-80 mb-1">Member Affiliation</div>
+                                <h3 class="text-3xl lg:text-2xl xl:text-3xl font-bold tracking-tight">Iniciativa Liberal</h3>
+                            </div>
+                            <!-- Icon: White Circle with Red Circle -->
+                            <div class="w-10 h-10 lg:w-8 lg:h-8 xl:w-10 xl:h-10 bg-white flex items-center justify-center shadow-lg shape-circle">
+                                <div class="w-4 h-4 lg:w-3 lg:h-3 xl:w-4 xl:h-4 bg-red-600 shape-circle"></div>
+                            </div>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="grid grid-cols-2 gap-4 lg:gap-2 xl:gap-4 mb-4">
+                            <div>
+                                <div class="text-[10px] font-bold uppercase tracking-widest opacity-60 mb-1">Member Name</div>
+                                <div class="text-xl lg:text-lg xl:text-xl font-medium">César Caldeira</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-[10px] font-bold uppercase tracking-widest opacity-60 mb-1">Status</div>
+                                <div class="text-xl lg:text-lg xl:text-xl font-medium">Active</div>
+                            </div>
+                        </div>
+
+                        <!-- Card Footer / Affiliations -->
+                        <div class="mt-4 pt-4 border-t border-white/20 grid grid-cols-2 gap-4">
+                            <div>
+                                <div class="text-[9px] font-bold uppercase tracking-widest opacity-60 mb-1">European Affiliation</div>
+                                <div class="text-sm lg:text-xs xl:text-sm font-medium flex items-center">
+                                    <span class="w-2 h-2 bg-blue-700 rounded-full mr-2"></span>
+                                    ALDE / Renew
+                                </div>
+                            </div>
+                            <div>
+                                <div class="text-[9px] font-bold uppercase tracking-widest opacity-60 mb-1">International Affiliation</div>
+                                <div class="text-sm lg:text-xs xl:text-sm font-medium flex items-center">
+                                    <span class="w-2 h-2 bg-purple-700 rounded-full mr-2"></span>
+                                    Liberal Intl
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Ideological Framework (Merged Section) -->
+            <div class="col-span-1 md:col-span-12 border-b border-carbon-g20 bg-white">
+                <div class="card-header">
+                    <i data-lucide="compass" class="w-5 h-5 mr-3 text-accent"></i>
+                    Ideological Framework
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12">
+                    
+                    <!-- Row 1: Core Ideology (Full Width with Description) -->
+                    <div class="col-span-1 md:col-span-12 p-6 md:p-8 border-b border-carbon-g20 bg-white">
+                        <span class="passport-label mb-2">Core Ideology</span>
+                        <div>
+                            <div class="flex items-center text-2xl font-medium text-carbon-g100 mb-2">
+                                <span class="w-4 h-4 bg-accent mr-3"></span>
+                                Social Liberalism
+                            </div>
+                            <p class="text-xs text-carbon-g60 max-w-3xl leading-relaxed ml-7">
+                                A political philosophy that endorses a market economy and the expansion of civil and political rights, while also believing that the legitimate role of the government includes addressing economic and social issues such as poverty, health care, and education.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Satirical Poster -->
+                    <div class="col-span-1 md:col-span-12 border-b border-carbon-g20 bg-white">
+                        <div class="grid grid-cols-3 divide-x divide-carbon-g20">
+                            <!-- Conservatism -->
+                            <div class="p-8 text-center font-serif flex flex-col items-center justify-between min-h-[240px] opacity-60 hover:opacity-100 transition-opacity">
+                                <h4 class="text-xs font-bold tracking-widest text-carbon-g100 border-b-2 border-carbon-g100 pb-1 mb-4">CONSERVATISM</h4>
+                                <i data-lucide="church" class="w-12 h-12 text-carbon-g100 mb-4"></i>
+                                <div class="text-[10px] font-bold text-carbon-g100 uppercase tracking-widest border-2 border-carbon-g100 px-3 py-1 mt-auto">Past It!!</div>
+                            </div>
+                            
+                            <!-- Liberalism -->
+                            <div class="p-8 text-center font-serif flex flex-col items-center justify-between min-h-[240px] bg-carbon-g10">
+                                <div class="w-full bg-carbon-g100 py-1 mb-4">
+                                    <h4 class="text-sm font-bold tracking-widest text-white">LIBERALISM</h4>
+                                </div>
+                                <i data-lucide="flower-2" class="w-16 h-16 text-carbon-g100 mb-4"></i>
+                                <div class="w-full bg-carbon-g100 py-1 mt-auto">
+                                    <div class="text-base font-bold text-white uppercase tracking-widest">IT!!!</div>
+                                </div>
+                            </div>
+
+                            <!-- Socialism -->
+                            <div class="p-8 text-center font-serif flex flex-col items-center justify-between min-h-[240px] opacity-60 hover:opacity-100 transition-opacity">
+                                <h4 class="text-xs font-bold tracking-widest text-carbon-g100 border-b-2 border-carbon-g100 pb-1 mb-4">SOCIALISM</h4>
+                                <i data-lucide="hammer" class="w-12 h-12 text-carbon-g100 mb-4"></i>
+                                <div class="text-[10px] font-bold text-carbon-g100 uppercase tracking-widest border-2 border-carbon-g100 px-3 py-1 mt-auto">Beyond It!!</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 3: Compass Scales (Vertical List) -->
+                    <div class="col-span-1 md:col-span-12 p-6 md:p-8 space-y-12 border-b border-carbon-g20">
+                        
+                        <!-- Political Structure -->
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="passport-label">Political Structure</span>
+                                <div class="text-right">
+                                    <span class="block text-accent font-bold text-sm">Representative Democracy</span>
+                                    <span class="block text-[10px] text-carbon-g60 max-w-[250px] leading-tight mt-1">Upholding the value of stable, representative institutions over direct populism.</span>
+                                </div>
+                            </div>
+                            <div class="scale-track">
+                                <div class="scale-tick" style="left: 0%;"></div>
+                                <div class="scale-tick" style="left: 25%;"></div>
+                                <div class="scale-tick" style="left: 50%;"></div>
+                                <div class="scale-tick" style="left: 75%;"></div>
+                                <div class="scale-tick" style="left: 100%;"></div>
+                                <div class="scale-marker" style="left: 75%;"></div>
+                            </div>
+                            <div class="flex justify-between text-[9px] text-carbon-g60 uppercase tracking-widest font-mono">
+                                <span>Totalitarian</span>
+                                <span>Direct</span>
+                            </div>
+                        </div>
+
+                        <!-- Social Liberties -->
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="passport-label">Social Liberties</span>
+                                <div class="text-right">
+                                    <span class="block text-accent font-bold text-sm">Progressive</span>
+                                    <span class="block text-[10px] text-carbon-g60 max-w-[250px] leading-tight mt-1">Championing progressive social liberties and individual rights.</span>
+                                </div>
+                            </div>
+                            <div class="scale-track">
+                                <div class="scale-tick" style="left: 0%;"></div>
+                                <div class="scale-tick" style="left: 25%;"></div>
+                                <div class="scale-tick" style="left: 50%;"></div>
+                                <div class="scale-tick" style="left: 75%;"></div>
+                                <div class="scale-tick" style="left: 100%;"></div>
+                                <div class="scale-marker" style="left: 75%;"></div>
+                            </div>
+                            <div class="flex justify-between text-[9px] text-carbon-g60 uppercase tracking-widest font-mono">
+                                <span>State Enforced</span>
+                                <span>Permissive</span>
+                            </div>
+                        </div>
+
+                        <!-- Economic Liberties -->
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="passport-label">Economic Liberties</span>
+                                <div class="text-right">
+                                    <span class="block text-accent font-bold text-sm">Free Market</span>
+                                    <span class="block text-[10px] text-carbon-g60 max-w-[250px] leading-tight mt-1">Free, well-regulated markets that encourage fair competition.</span>
+                                </div>
+                            </div>
+                            <div class="scale-track">
+                                <div class="scale-tick" style="left: 0%;"></div>
+                                <div class="scale-tick" style="left: 25%;"></div>
+                                <div class="scale-tick" style="left: 50%;"></div>
+                                <div class="scale-tick" style="left: 75%;"></div>
+                                <div class="scale-tick" style="left: 100%;"></div>
+                                <div class="scale-marker" style="left: 75%;"></div>
+                            </div>
+                            <div class="flex justify-between text-[9px] text-carbon-g60 uppercase tracking-widest font-mono">
+                                <span>Command</span>
+                                <span>Laissez-Faire</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 4: Intellectual Influences (Museum Gallery Carousel - Static Layout) -->
+                    <div class="col-span-1 md:col-span-12 border-t border-carbon-g20 bg-white">
+                        <div class="card-header">
+                            <i data-lucide="library" class="w-5 h-5 mr-3 text-accent"></i>
+                            Intellectual Influences
+                        </div>
+                        
+                        <div class="p-6 md:p-8 bg-white border-b border-carbon-g20">
+                            <p class="text-sm text-carbon-g70 leading-relaxed max-w-4xl font-serif">
+                                This intellectual genealogy represents a deliberate tension between the realist acknowledgment of power dynamics and the liberal aspiration for individual freedom. While spanning the spectrum from Social Democracy to Conservatism, and from Ancient Greece to Modern Atlanticism, these thinkers share a fundamental commitment to the <span class="text-carbon-g100 font-medium">open society</span>, the <span class="text-carbon-g100 font-medium">rule of law</span>, and the belief that <span class="text-carbon-g100 font-medium">institutions matter</span> more than the will of any single leader.
+                            </p>
+                        </div>
+
+                        <!-- Museum Wall Content -->
+                        <div class="museum-wall">
+                            <div class="p-8 md:p-16 flex justify-center items-center min-h-[500px] overflow-hidden">
+                                <!-- Dynamic Content Container -->
+                                <div id="influence-display" class="w-full max-w-5xl grid grid-cols-1 md:grid-cols-12 gap-12 items-center transition-all duration-1000 ease-in-out transform translate-x-0 opacity-100">
+                                    
+                                    <!-- Painting (Image) -->
+                                    <div class="md:col-span-5 flex justify-center md:justify-end">
+                                        <!-- The Frame Wrapper -->
+                                        <div id="inf-frame" class="relative transition-all duration-1000 bg-black flex items-center justify-center" style="min-width: 250px; min-height: 320px;">
+                                            <!-- Fallback Icon -->
+                                            <div class="absolute inset-0 flex items-center justify-center bg-carbon-g80 z-0">
+                                                <i data-lucide="user" class="w-16 h-16 text-white/20"></i>
+                                            </div>
+                                            <!-- Portrait -->
+                                            <img id="inf-image" src="" alt="Portrait" class="relative z-10 w-auto h-auto max-h-[350px] md:max-h-[400px] max-w-full object-cover shadow-inner" onerror="this.style.display='none'">
+                                        </div>
+                                    </div>
+
+                                    <!-- Museum Placard (Text) -->
+                                    <div class="md:col-span-7 flex flex-col justify-center items-start">
+                                        <div class="bg-white p-8 border border-gray-200 shadow-md max-w-lg relative">
+                                            <!-- Screw heads decoration -->
+                                            <div class="absolute top-2 left-2 w-2 h-2 rounded-full bg-gray-300 flex items-center justify-center"><div class="w-full h-px bg-gray-400 transform rotate-45"></div></div>
+                                            <div class="absolute top-2 right-2 w-2 h-2 rounded-full bg-gray-300 flex items-center justify-center"><div class="w-full h-px bg-gray-400 transform -rotate-12"></div></div>
+                                            <div class="absolute bottom-2 left-2 w-2 h-2 rounded-full bg-gray-300 flex items-center justify-center"><div class="w-full h-px bg-gray-400 transform rotate-12"></div></div>
+                                            <div class="absolute bottom-2 right-2 w-2 h-2 rounded-full bg-gray-300 flex items-center justify-center"><div class="w-full h-px bg-gray-400 transform -rotate-45"></div></div>
+
+                                            <div class="mb-4 pb-4 border-b border-carbon-g20">
+                                                <h3 id="inf-name" class="text-2xl font-serif font-bold text-carbon-g100 mb-1">--</h3>
+                                                <span id="inf-tag" class="text-[10px] font-mono uppercase tracking-widest text-carbon-g60">--</span>
+                                            </div>
+                                            
+                                            <div class="mb-6">
+                                                <p id="inf-desc" class="text-sm text-carbon-g80 leading-relaxed font-sans mb-4">
+                                                    --
+                                                </p>
+                                                <blockquote class="text-sm text-carbon-g60 italic font-light font-serif border-l-2 border-accent pl-3">
+                                                    "<span id="inf-quote">--</span>"
+                                                </blockquote>
+                                            </div>
+
+                                            <div class="text-right">
+                                                <p id="inf-source" class="text-[9px] text-carbon-g40 font-mono uppercase tracking-wider">
+                                                    --
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 4. Political Relations (Standalone Section) -->
+            <div class="col-span-1 md:col-span-12 border-t border-b border-carbon-g20 bg-carbon-g10">
+                <div class="card-header bg-carbon-g10 border-carbon-g20">
+                    <i data-lucide="users" class="w-5 h-5 mr-3 text-accent"></i>
+                    Political Relations
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                    <!-- Dialogue (Liberal Democracy) -->
+                    <div class="p-8 bg-gradient-to-br from-emerald-500 to-emerald-700 text-white flex flex-col justify-between relative overflow-hidden group">
+                        <!-- Watermark -->
+                        <div class="absolute -bottom-6 -right-6 text-white/10 transform rotate-12 group-hover:scale-110 transition-transform duration-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="3" y1="22" x2="21" y2="22"></line>
+                                <line x1="6" y1="18" x2="6" y2="11"></line>
+                                <line x1="10" y1="18" x2="10" y2="11"></line>
+                                <line x1="14" y1="18" x2="14" y2="11"></line>
+                                <line x1="18" y1="18" x2="18" y2="11"></line>
+                                <polygon points="12 2 20 7 4 7 12 2"></polygon>
+                            </svg>
+                        </div>
+
+                        <div class="relative z-10">
+                            <div class="border-b border-white/20 pb-4 mb-6">
+                                <h3 class="font-sans text-2xl font-bold mb-1">Liberal Democracy</h3>
+                                <span class="passport-label text-emerald-100 opacity-80">Constructive Dialogue</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xs bg-white/20 border border-white/30 px-3 py-1.5 text-white font-medium backdrop-blur-sm">Liberalism</span>
+                                <span class="text-xs bg-white/20 border border-white/30 px-3 py-1.5 text-white font-medium backdrop-blur-sm">Social-Democracy</span>
+                                <span class="text-xs bg-white/20 border border-white/30 px-3 py-1.5 text-white font-medium backdrop-blur-sm">Christian-Democracy</span>
+                                <span class="text-xs bg-white/20 border border-white/30 px-3 py-1.5 text-white font-medium backdrop-blur-sm">Conservatism</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Opposition (Illiberalism) -->
+                    <div class="p-8 bg-gradient-to-br from-red-600 to-red-800 text-white flex flex-col justify-between relative overflow-hidden group">
+                        <!-- Watermark -->
+                        <div class="absolute -bottom-4 -right-4 text-white/10 transform -rotate-12 group-hover:scale-110 transition-transform duration-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17"></path>
+                                <path d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h13c1 0 2-1 2-2v-2c0-1-1-2-2-2h-2.4c-1.1 0-2.1-.7-2.4-1.8L16.1 6.5c-.4-1.3-1.4-2.4-2.7-2.9C11.9 3.2 10.5 3.8 10 5.3L9 9"></path>
+                            </svg>
+                        </div>
+
+                        <div class="relative z-10">
+                            <div class="border-b border-white/20 pb-4 mb-6">
+                                <h3 class="font-sans text-2xl font-bold mb-1">Illiberalism</h3>
+                                <span class="passport-label text-red-100 opacity-80">Fundamental Opposition</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="text-xl bg-black/20 border border-white/10 px-3 py-1.5 text-white backdrop-blur-sm" style="font-family: 'UnifrakturMaguntia', cursive;">Fascism</span>
+                                <span class="text-base bg-black/20 border border-white/10 px-3 py-1.5 text-white uppercase tracking-wider backdrop-blur-sm" style="font-family: 'Russo One', sans-serif;">Communism</span>
+                                <span class="text-lg bg-black/20 border border-white/10 px-3 py-1.5 text-white font-bold backdrop-blur-sm" style="font-family: 'Lusitana', serif;">Nat. Populism</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Appendage: The Big Tent -->
+                <div class="p-6 md:p-8 border-t border-carbon-g20 bg-white">
+                    <div class="flex flex-col md:flex-row gap-4 items-start max-w-4xl">
+                        <div class="shrink-0 mt-1">
+                            <i data-lucide="tent" class="w-5 h-5 text-accent"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-mono text-xs font-bold uppercase tracking-widest text-carbon-g100 mb-2">The Big Tent of Liberalism</h4>
+                            <p class="text-sm text-carbon-g70 leading-relaxed font-medium">
+                                Democratic, pluralistic dialogue can only be achieved within the liberal centre that spans from social democracy to conservatism: the "big tent of liberalism", which is under threat from increasing global illiberal forces.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Grand Strategy (New Standalone Section) -->
+            <div class="col-span-1 md:col-span-12 border-b border-carbon-g20 bg-white">
+                <div class="card-header">
+                    <i data-lucide="crosshair" class="w-5 h-5 mr-3 text-accent"></i>
+                    Grand Strategy
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 divide-y lg:divide-y-0 lg:divide-x divide-carbon-g20">
+                    
+                    <!-- Left: The Ruy Lopez (1/3 Width) -->
+                    <div class="p-8 md:p-12 bg-carbon-g10 flex items-center justify-center lg:col-span-1">
+                        <div class="w-full max-w-[320px]">
+                            <!-- 8x8 Chess Grid -->
+                            <div class="aspect-square border-8 border-[#2e2e2e] shadow-2xl grid grid-cols-8 text-2xl sm:text-3xl bg-[#f0d9b5]">
+                                <!-- Square Color Classes -->
+                                <style>
+                                    .sq-l { background-color: #f0d9b5; display: flex; align-items: center; justify-content: center; }
+                                    .sq-d { background-color: #b58863; display: flex; align-items: center; justify-content: center; color: black; }
+                                    .pc-b { color: black; }
+                                    .pc-w { color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
+                                </style>
+                                
+                                <!-- Row 8 (Black) -->
+                                <div class="sq-l pc-b">♜</div><div class="sq-d pc-b"></div><div class="sq-l pc-b">♝</div><div class="sq-d pc-b">♛</div><div class="sq-l pc-b">♚</div><div class="sq-d pc-b">♝</div><div class="sq-l pc-b">♞</div><div class="sq-d pc-b">♜</div>
+                                <!-- Row 7 -->
+                                <div class="sq-d pc-b">♟</div><div class="sq-l pc-b">♟</div><div class="sq-d pc-b">♟</div><div class="sq-l pc-b">♟</div><div class="sq-d"></div><div class="sq-l pc-b">♟</div><div class="sq-d pc-b">♟</div><div class="sq-l pc-b">♟</div>
+                                <!-- Row 6 -->
+                                <div class="sq-l"></div><div class="sq-d"></div><div class="sq-l pc-b">♞</div><div class="sq-d"></div><div class="sq-l"></div><div class="sq-d"></div><div class="sq-l"></div><div class="sq-d"></div>
+                                <!-- Row 5 -->
+                                <div class="sq-d"></div><div class="sq-l pc-w">♝</div><div class="sq-d"></div><div class="sq-l"></div><div class="sq-d pc-b">♟</div><div class="sq-l"></div><div class="sq-d"></div><div class="sq-l"></div>
+                                <!-- Row 4 -->
+                                <div class="sq-l"></div><div class="sq-d"></div><div class="sq-l"></div><div class="sq-d"></div><div class="sq-l pc-w">♟</div><div class="sq-d"></div><div class="sq-l"></div><div class="sq-d"></div>
+                                <!-- Row 3 -->
+                                <div class="sq-d"></div><div class="sq-l"></div><div class="sq-d"></div><div class="sq-l"></div><div class="sq-d"></div><div class="sq-l pc-w">♞</div><div class="sq-d"></div><div class="sq-l"></div>
+                                <!-- Row 2 -->
+                                <div class="sq-l pc-w">♟</div><div class="sq-d pc-w">♟</div><div class="sq-l pc-w">♟</div><div class="sq-d pc-w">♟</div><div class="sq-l"></div><div class="sq-d pc-w">♟</div><div class="sq-l pc-w">♟</div><div class="sq-d pc-w">♟</div>
+                                <!-- Row 1 -->
+                                <div class="sq-d pc-w">♜</div><div class="sq-l pc-w"></div><div class="sq-d pc-w"></div><div class="sq-l pc-w">♛</div><div class="sq-d pc-w">♚</div><div class="sq-l"></div><div class="sq-d"></div><div class="sq-l pc-w">♜</div>
+                            </div>
+                            <div class="text-[9px] font-mono text-center mt-3 text-carbon-g60 uppercase tracking-widest">
+                                The Ruy Lopez (Spanish Opening)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Strategy Text (2/3 Width) -->
+                    <div class="lg:col-span-2 p-8 md:p-12 flex flex-col justify-center bg-white">
+                        <span class="passport-label mb-4 text-accent">Strategic Vision</span>
+                        <h4 class="font-serif text-2xl md:text-3xl text-carbon-g100 font-light mb-6 leading-tight">
+                            "Foreign policy is not a game of chance, but a test of strategic foresight."
+                        </h4>
+                        <div class="space-y-6 text-sm text-carbon-g80 leading-relaxed font-sans max-w-3xl">
+                            <p>
+                                Strategy and leadership are the twin pillars of effective foreign policy. Like the Ruy Lopez—one of the oldest and most analyzed openings—statecraft requires deep preparation, the control of the center, and the flexibility to adapt to an opponent's counterplay without losing sight of the endgame.
+                            </p>
+                            <p>
+                                Drawing from the <strong>Thucydidean tradition</strong>, we recognize that the immutable dynamics of fear, honor, and interest continue to drive state behavior. In an anarchic international system, abstract idealism is insufficient. Policy-making must be grounded in a rigorous study of <strong>history and area studies</strong>—understanding the cultural and historical imperatives of our rivals is the only path to a sustainable strategy that defends liberal values against revisionist pressure.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 6. Foreign Policy & International Relations (New Detailed Section) -->
+            <div class="col-span-1 md:col-span-12 border-b border-carbon-g20 bg-white">
+                <div class="card-header">
+                    <i data-lucide="globe-2" class="w-5 h-5 mr-3 text-accent"></i>
+                    Foreign Policy & IR
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 divide-y md:divide-y-0 md:divide-x divide-carbon-g20 border-b border-carbon-g20">
+                    
+                    <!-- IR Theory -->
+                    <div class="col-span-1 md:col-span-6 p-8 bg-white hover:bg-carbon-g10 transition-colors">
+                        <span class="passport-label mb-4">IR Theory</span>
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="scale" class="w-6 h-6 text-carbon-g100"></i>
+                            <h4 class="text-xl font-medium text-carbon-g100">Neoclassical Realism</h4>
+                        </div>
+                        <p class="text-sm text-carbon-g70 leading-relaxed">
+                            Foreign policy is driven by the international system's anarchic structure but filtered through domestic political imperatives and leadership perception. State power capabilities determine the scope of ambition, but internal cohesion dictates the efficiency of execution.
+                        </p>
+                    </div>
+
+                    <!-- EU Strategy (EU Theme) -->
+                    <div class="col-span-1 md:col-span-6 p-8 relative overflow-hidden bg-[#003399] text-white">
+                        <!-- Watermark: Ring of Stars (Corrected Orientation & Shape) -->
+                        <div class="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none select-none">
+                            <svg viewBox="0 0 100 100" class="w-64 h-64 text-[#FFCC00] fill-current">
+                                <defs>
+                                    <!-- Geometrically correct 5-point star -->
+                                    <path id="eu-star-shape" d="M0,-1 L0.225,-0.309 L0.951,-0.309 L0.363,0.118 L0.588,0.809 L0,0.382 L-0.588,0.809 L-0.363,0.118 L-0.951,-0.309 L-0.225,-0.309 Z" />
+                                </defs>
+                                <g transform="translate(50,50) scale(4)">
+                                    <!-- Stars positioned in a circle but NOT rotated (pointing up) -->
+                                    <use href="#eu-star-shape" transform="translate(0, -8)" />
+                                    <use href="#eu-star-shape" transform="rotate(30) translate(0, -8) rotate(-30)" />
+                                    <use href="#eu-star-shape" transform="rotate(60) translate(0, -8) rotate(-60)" />
+                                    <use href="#eu-star-shape" transform="rotate(90) translate(0, -8) rotate(-90)" />
+                                    <use href="#eu-star-shape" transform="rotate(120) translate(0, -8) rotate(-120)" />
+                                    <use href="#eu-star-shape" transform="rotate(150) translate(0, -8) rotate(-150)" />
+                                    <use href="#eu-star-shape" transform="rotate(180) translate(0, -8) rotate(-180)" />
+                                    <use href="#eu-star-shape" transform="rotate(210) translate(0, -8) rotate(-210)" />
+                                    <use href="#eu-star-shape" transform="rotate(240) translate(0, -8) rotate(-240)" />
+                                    <use href="#eu-star-shape" transform="rotate(270) translate(0, -8) rotate(-270)" />
+                                    <use href="#eu-star-shape" transform="rotate(300) translate(0, -8) rotate(-300)" />
+                                    <use href="#eu-star-shape" transform="rotate(330) translate(0, -8) rotate(-330)" />
+                                </g>
+                            </svg>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <span class="passport-label mb-4 text-white/70 border-b border-white/20 pb-1 inline-block">European Strategy</span>
+                            <div class="flex items-center gap-3 mb-4">
+                                <!-- Sharp Star Icon Replacement -->
+                                <svg viewBox="0 0 24 24" class="w-6 h-6 text-[#FFCC00] fill-current">
+                                    <path d="M12,2 L15.09,8.26 L22,9.27 L17,14.14 L18.18,21.02 L12,17.77 L5.82,21.02 L7,14.14 L2,9.27 L8.91,8.26 L12,2 Z" />
+                                </svg>
+                                <h4 class="text-xl font-medium text-white">Federalist Union</h4>
+                            </div>
+                            <p class="text-sm text-white/90 leading-relaxed font-light">
+                                The EU must evolve from a confederation into a sovereign Federation. Key pillars: A unified Defense Force, a true Energy Union, and direct democratic accountability for the Commission. Sovereignty is shared to be strengthened, not lost.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Global Affairs Monitor -->
+                <div class="bg-carbon-g10 p-8">
+                    <span class="passport-label mb-4">Global Affairs Monitor</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        
+                        <!-- Ukraine (Custom Gradient & Tank Watermark) -->
+                        <div class="p-5 border border-carbon-g20 relative overflow-hidden group bg-gradient-to-br from-blue-600 via-blue-500 to-yellow-500 text-white shadow-sm">
+                            <!-- Watermark -->
+                            <div class="absolute -bottom-4 -right-4 text-white/20 transform rotate-6 group-hover:scale-110 transition-transform duration-500 pointer-events-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M2 12h20v2H2zM4 9h16v3H4zM6 6h12v3H6zM14 6V3h-2v3" />
+                                    <path d="M2 14h20v5a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-5z" />
+                                    <circle cx="6" cy="18" r="1.5" fill="rgba(0,0,0,0.2)" />
+                                    <circle cx="12" cy="18" r="1.5" fill="rgba(0,0,0,0.2)" />
+                                    <circle cx="18" cy="18" r="1.5" fill="rgba(0,0,0,0.2)" />
+                                </svg>
+                            </div>
+
+                            <div class="relative z-10">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-white border-b border-white/20 pb-1">Ukraine War</span>
+                                    <div class="flex gap-1 text-[9px] font-bold uppercase">
+                                        <span class="bg-white text-blue-700 px-1.5 py-0.5 shadow-sm">UKR</span>
+                                        <span class="bg-black/20 text-white/70 px-1.5 py-0.5 line-through">RUS</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-white/90 leading-relaxed font-medium">Total commitment to Ukrainian victory. Russia is a revisionist power threatening European security.</p>
+                            </div>
+                        </div>
+
+                        <!-- Cross-Strait (Blue/Red Gradient & Dual Watermarks) -->
+                        <div class="p-5 border border-carbon-g20 relative overflow-hidden group bg-gradient-to-br from-blue-800 via-purple-900 to-red-700 text-white shadow-sm">
+                            
+                            <!-- Watermark: White Sun (Blue Side) -->
+                            <div class="absolute -top-6 -left-6 text-white/10 transform -rotate-12 group-hover:scale-110 transition-transform duration-500 pointer-events-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="currentColor">
+                                    <circle cx="12" cy="12" r="5" />
+                                    <path d="M12 2 L13.5 5.5 L17 4.5 L16 8 L19.5 9.5 L17 12 L19.5 14.5 L16 16 L17 19.5 L13.5 18.5 L12 22 L10.5 18.5 L7 19.5 L8 16 L4.5 14.5 L7 12 L4.5 9.5 L8 8 L7 4.5 L10.5 5.5 Z" />
+                                </svg>
+                            </div>
+
+                            <!-- Watermark: Red Star (Red Side - Darker shade for visibility) -->
+                            <div class="absolute -bottom-6 -right-6 text-red-900/40 transform rotate-12 group-hover:scale-110 transition-transform duration-500 pointer-events-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                                </svg>
+                            </div>
+
+                            <div class="relative z-10">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-white border-b border-white/20 pb-1">Cross-Strait</span>
+                                    <div class="flex gap-1 text-[9px] font-bold uppercase">
+                                        <span class="bg-black/20 text-white/70 px-1.5 py-0.5 line-through">CHN</span>
+                                        <span class="bg-white text-red-700 px-1.5 py-0.5 shadow-sm">TWN</span>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-white/90 leading-relaxed font-medium">Strategic ambiguity is obsolete. Defense of Taiwan is defense of the liberal democratic order.</p>
+                            </div>
+                        </div>
+
+                        <!-- Middle East (Default Style) -->
+                        <div class="p-5 border border-carbon-g20 bg-white">
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="text-xs font-bold uppercase tracking-wider text-carbon-g100 border-b border-carbon-g20 pb-1">Middle East</span>
+                                <div class="flex gap-1 text-[9px] font-bold uppercase">
+                                    <span class="bg-accent text-white px-1.5 py-0.5">ISR</span>
+                                    <span class="bg-accent text-white px-1.5 py-0.5">PSE</span>
+                                </div>
+                            </div>
+                            <p class="text-xs text-carbon-g60 leading-relaxed font-medium">Pragmatic support for a Two-State solution. Condemnation of Hamas terror; opposition to illegal settlements.</p>
+                        </div>
+
+                        <!-- NATO (Dark Blue Gradient & Compass Watermark) -->
+                        <div class="p-5 border border-carbon-g20 relative overflow-hidden group bg-gradient-to-br from-[#004990] to-[#003366] text-white shadow-sm">
+                            <!-- Watermark: Compass -->
+                            <div class="absolute -bottom-8 -right-8 text-white/10 transform group-hover:rotate-45 transition-transform duration-700 pointer-events-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="140" height="140" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
+                                </svg>
+                            </div>
+
+                            <div class="relative z-10">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-white border-b border-white/20 pb-1">Atlanticism</span>
+                                    <i data-lucide="shield" class="w-4 h-4 text-white"></i>
+                                </div>
+                                <p class="text-xs text-white/90 leading-relaxed font-medium">NATO remains the cornerstone of defense. 2% GDP target is a floor, not a ceiling.</p>
+                            </div>
+                        </div>
+
+                        <!-- Lusophony (Green/Red Gradient & Armillary Sphere Watermark) -->
+                        <div class="p-5 border border-carbon-g20 relative overflow-hidden group bg-gradient-to-br from-green-700 to-red-700 text-white shadow-sm">
+                            <!-- Watermark: Armillary Sphere Representation -->
+                            <div class="absolute -bottom-6 -right-6 text-[#FFDE00]/20 transform group-hover:rotate-180 transition-transform duration-[2s] pointer-events-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(45 12 12)" />
+                                    <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-45 12 12)" />
+                                    <line x1="12" y1="2" x2="12" y2="22" />
+                                </svg>
+                            </div>
+
+                            <div class="relative z-10">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-white border-b border-white/20 pb-1">Lusophony</span>
+                                    <i data-lucide="languages" class="w-4 h-4 text-white"></i>
+                                </div>
+                                <p class="text-xs text-white/90 leading-relaxed font-medium">Economic and cultural leveraging of the CPLP, moving beyond post-colonial guilt to pragmatic partnership.</p>
+                            </div>
+                        </div>
+
+                        <!-- United Nations (Light UN Blue Gradient) -->
+                        <div class="p-5 border border-carbon-g20 relative overflow-hidden group bg-gradient-to-br from-[#4b92db] to-[#0077b6] text-white shadow-sm">
+                            <!-- Watermark: Globe/Wreath hint -->
+                            <div class="absolute -bottom-6 -right-6 text-white/20 transform rotate-12 group-hover:scale-110 transition-transform duration-500 pointer-events-none">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="2" y1="12" x2="22" y2="12"></line>
+                                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                </svg>
+                            </div>
+
+                            <div class="relative z-10">
+                                <div class="flex justify-between items-start mb-3">
+                                    <span class="text-xs font-bold uppercase tracking-wider text-white border-b border-white/20 pb-1">United Nations</span>
+                                    <i data-lucide="gavel" class="w-4 h-4 text-white"></i>
+                                </div>
+                                <p class="text-xs text-white/90 leading-relaxed font-medium">Urgent reform of the Security Council required. Advocacy for expanded permanent membership and veto restriction.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Policy Positions (Row 4 - Full Width - White - No Gaps) -->
+            <div class="col-span-1 md:col-span-12 border-b border-carbon-g20 bg-white">
+                <div class="card-header">
+                    <i data-lucide="file-text" class="w-5 h-5 mr-3 text-accent"></i>
+                    Policy Positions
+                </div>
+                <!-- Refactored Grid: Uses border-l and border-t on container, and border-r and border-b on items for consistent grids -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border-t border-l border-carbon-g20">
+                    
+                    <!-- Policy 1 -->
+                    <div class="bg-carbon-g10 p-8 hover:bg-white transition-colors border-r border-b border-carbon-g20">
+                        <h4 class="font-medium text-carbon-g100 text-lg mb-4">Foreign Policy</h4>
+                        <div class="text-sm text-carbon-g80 leading-relaxed">
+                            <p class="mb-3 font-medium text-accent">Realist Liberalism</p>
+                            <p class="mb-3">Recognise the end of universal multilateralism. Strategy must pivot to reinforcing specific institutions and alliances explicitly dedicated to the defence of liberal values.</p>
+                            <ul class="list-disc pl-4 space-y-1 text-carbon-g60">
+                                <li>Reinforce liberal alliances (NATO, EU).</li>
+                                <li>Pivot away from ineffective multilateral bodies.</li>
+                                <li>Active defence of open societies.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Policy 2 -->
+                    <div class="bg-carbon-g10 p-8 hover:bg-white transition-colors border-r border-b border-carbon-g20">
+                        <h4 class="font-medium text-carbon-g100 text-lg mb-4">European Union</h4>
+                        <div class="text-sm text-carbon-g80 leading-relaxed">
+                            <p class="mb-3 font-medium text-accent">Path to Federalism</p>
+                            <p class="mb-3">Greater integration is essential. Prioritise surpassing the impediment of national vetoes in policy-making and enforce strict separation of powers in member states.</p>
+                            <ul class="list-disc pl-4 space-y-1 text-carbon-g60">
+                                <li>Path towards a greater role for the European Parliament.</li>
+                                <li>Create a cohesive federal foreign policy.</li>
+                                <li>Removal of unanimity requirements.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Policy 3 -->
+                    <div class="bg-carbon-g10 p-8 hover:bg-white transition-colors border-r border-b border-carbon-g20">
+                        <h4 class="font-medium text-carbon-g100 text-lg mb-4">Economy & Taxation</h4>
+                        <div class="text-sm text-carbon-g80 leading-relaxed">
+                            <p class="mb-3">Prioritise fiscal responsibility and ensure a better use of tax funding for public services.</p>
+                            <p><strong>Corporate Tax:</strong> Ensure European companies face a common taxation policy that promotes innovation and retains high-level talent within Europe.</p>
+                        </div>
+                    </div>
+
+                    <!-- Policy 4 -->
+                    <div class="bg-carbon-g10 p-8 hover:bg-white transition-colors border-r border-b border-carbon-g20">
+                        <h4 class="font-medium text-carbon-g100 text-lg mb-4">Social Rights</h4>
+                        <div class="text-sm text-carbon-g80 leading-relaxed">
+                            <p class="mb-3">Full defence of minority rights, treated with the same dignity offered by the human condition. Refusal of any form of discrimination.</p>
+                            <ul class="list-disc pl-4 space-y-1 text-carbon-g60">
+                                <li>Defend the right to equal marriage.</li>
+                                <li>Guarantee gender self-determination.</li>
+                                <li>Safeguards against salary discrimination.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Policy 5 -->
+                    <div class="bg-carbon-g10 p-8 hover:bg-white transition-colors border-r border-b border-carbon-g20">
+                        <h4 class="font-medium text-carbon-g100 text-lg mb-4">Civic Engagement</h4>
+                        <div class="text-sm text-carbon-g80 leading-relaxed">
+                            <p class="mb-3">Promote more participative moments in public policy making.</p>
+                            <p>Open the path to greater digital participation in the political sphere to bridge the gap between citizens and institutions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Policy 6: Defence -->
+                    <div class="bg-carbon-g10 p-8 hover:bg-white transition-colors border-r border-b border-carbon-g20">
+                        <h4 class="font-medium text-carbon-g100 text-lg mb-4">Defence & Security</h4>
+                        <div class="text-sm text-carbon-g80 leading-relaxed">
+                            <p class="mb-3">Reinforce defence spending, recognising the reality of a dangerous world. Focus on quality and modernization.</p>
+                            <p>Promote greater public awareness of military issues and volunteering by increasing pay conditions for troops.</p>
+                        </div>
+                    </div>
+
+                    <!-- Policy 7: Education -->
+                    <div class="bg-carbon-g10 p-8 hover:bg-white transition-colors border-r border-b border-carbon-g20">
+                        <h4 class="font-medium text-carbon-g100 text-lg mb-4">Education</h4>
+                        <div class="text-sm text-carbon-g80 leading-relaxed">
+                            <p class="mb-3">Combat public school degradation by offering better conditions to professors.</p>
+                            <ul class="list-disc pl-4 space-y-1 text-carbon-g60">
+                                <li>Partner with private sector to ensure universal quality access.</li>
+                                <li>Embrace digitalization of teaching methods.</li>
+                                <li>Support innovative educational initiatives.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Policy 8: Public Service Reform -->
+                    <div class="bg-carbon-g10 p-8 hover:bg-white transition-colors border-r border-b border-carbon-g20">
+                        <h4 class="font-medium text-carbon-g100 text-lg mb-4">State Reform</h4>
+                        <div class="text-sm text-carbon-g80 leading-relaxed">
+                            <p class="mb-3">Zero-based budgeting for all state departments.</p>
+                            <p>Meritocratic evaluation for civil servants to replace seniority-based progression.</p>
+                        </div>
+                    </div>
+
+                    <!-- Empty Cell to fill grid (if needed for visual balance on large screens) -->
+                    <div class="bg-carbon-g10 p-8 border-r border-b border-carbon-g20 hidden lg:block"></div>
+
+                </div>
+            </div>
+
+            <!-- 7. Candidacies (Accordion - Light Gray - G10) -->
+            <div class="col-span-1 md:col-span-12 border-b border-carbon-g20 bg-carbon-g10 accordion-item group">
+                <div class="card-header bg-carbon-g10 border-carbon-g20 hover:bg-white transition-colors flex justify-between cursor-pointer" onclick="toggleAccordion(this.closest('.accordion-item'))">
+                    <div class="flex items-center">
+                        <i data-lucide="briefcase" class="w-5 h-5 mr-3 text-accent"></i>
+                        Political Candidacies
+                    </div>
+                    <i data-lucide="plus" class="accordion-icon w-5 h-5 text-carbon-g60"></i>
+                </div>
+                
+                <div class="accordion-content bg-carbon-g10 border-t border-carbon-g20">
+                    <div>
+                        <!-- Header Row -->
+                        <div class="hidden md:grid md:grid-cols-12 bg-white px-6 md:px-8 py-3 text-[10px] font-mono text-carbon-g60 uppercase tracking-wider border-b border-carbon-g20">
+                            <div class="col-span-2">Date</div>
+                            <div class="col-span-3">Election</div>
+                            <div class="col-span-3">Position</div>
+                            <div class="col-span-2">Circle</div>
+                            <div class="col-span-2 text-right">Elected</div>
+                        </div>
+                        <!-- Entry -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-4 px-6 md:px-8 hover:bg-white transition-colors items-center bg-carbon-g10 border-b border-carbon-g20 last:border-0">
+                            <div class="col-span-2 font-mono text-xs text-carbon-g60 uppercase w-full mb-1 md:mb-0">Oct 2025</div>
+                            <div class="col-span-3 font-medium text-sm text-carbon-g100 w-full mb-1 md:mb-0">Local Elections</div>
+                            <div class="col-span-3 text-xs text-carbon-g60 w-full mb-1 md:mb-0">Parish Assembly</div>
+                            <div class="col-span-2 text-sm text-carbon-g80 w-full mb-1 md:mb-0">Marvila, Lisbon</div>
+                            <div class="col-span-2 w-full flex justify-end">
+                                <div class="w-5 h-5 border-2 border-red-500 rounded-sm" title="Not Elected"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Voting History (Accordion Card - White) -->
+            <div class="col-span-1 md:col-span-12 accordion-item group bg-white">
+                <div class="card-header hover:bg-carbon-g10 transition-colors flex justify-between cursor-pointer" onclick="toggleAccordion(this.closest('.accordion-item'))">
+                    <div class="flex items-center">
+                        <i data-lucide="vote" class="w-5 h-5 mr-3 text-accent"></i>
+                        Voting History
+                    </div>
+                    <i data-lucide="plus" class="accordion-icon w-5 h-5 text-carbon-g60"></i>
+                </div>
+                
+                <div class="accordion-content bg-carbon-g10 border-t border-carbon-g20">
+                    <!-- Intro Description -->
+                    <div class="p-6 md:px-8 border-b border-carbon-g20 bg-white">
+                        <p class="text-sm text-carbon-g70 leading-relaxed max-w-3xl">
+                            Political thought is a journey of consolidation. While my commitment to social causes has been a constant throughout the years, the means to achieve them have evolved. Over time, I discovered that the most effective vehicle for progress lies not in the state, but in the empowerment of the individual—firmly placing my political home within Liberalism.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <!-- Header Row -->
+                        <div class="hidden md:grid md:grid-cols-12 bg-white px-6 md:px-8 py-3 text-[10px] font-mono text-carbon-g60 uppercase tracking-wider border-b border-carbon-g20">
+                            <div class="col-span-2">Date</div>
+                            <div class="col-span-4">Election</div>
+                            <div class="col-span-3">Ballot / Round</div>
+                            <div class="col-span-3">Vote</div>
+                        </div>
+
+                        <!-- 2026 Feb -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center hover:bg-white transition-colors">
+                            <div class="col-span-2 font-mono text-xs text-carbon-g60 mb-1 md:mb-0">Feb 2026</div>
+                            <div class="col-span-4 font-medium text-sm text-carbon-g100 mb-1 md:mb-0">Presidential Election</div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Round 2</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="w-6 h-6 bg-[#ff6699] mr-3 rounded-sm border border-carbon-g20 shadow-sm flex-shrink-0"></div>
+                                António José Seguro
+                            </div>
+                        </div>
+
+                        <!-- 2026 Jan -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center hover:bg-white transition-colors">
+                            <div class="col-span-2 font-mono text-xs text-carbon-g60 mb-1 md:mb-0">Jan 2026</div>
+                            <div class="col-span-4 font-medium text-sm text-carbon-g100 mb-1 md:mb-0">Presidential Election</div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Round 1</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="w-6 h-6 bg-[#00abe4] mr-3 rounded-sm border border-carbon-g20 shadow-sm flex-shrink-0"></div>
+                                J. Cotrim Figueiredo
+                            </div>
+                        </div>
+
+                        <!-- 2025 Oct (Chamber) -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center hover:bg-white transition-colors">
+                            <div class="col-span-2 font-mono text-xs text-carbon-g60 mb-1 md:mb-0">Oct 2025</div>
+                            <div class="col-span-4 font-medium text-sm text-carbon-g100 mb-1 md:mb-0">Local Elections</div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Municipal Chamber</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="flex w-6 h-6 mr-3 rounded-sm overflow-hidden border border-carbon-g20 shadow-sm flex-shrink-0">
+                                    <div class="w-1/3 h-full bg-[#f47b20]"></div>
+                                    <div class="w-1/3 h-full bg-[#00abe4]"></div>
+                                    <div class="w-1/3 h-full bg-[#0095d3]"></div>
+                                </div>
+                                PSD/IL/CDS
+                            </div>
+                        </div>
+                        <!-- 2025 Oct (Assembly) -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center bg-carbon-g10 hover:bg-white transition-colors">
+                            <div class="col-span-2 hidden md:block"></div>
+                            <div class="col-span-4 hidden md:block"></div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Municipal Assembly</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="flex w-6 h-6 mr-3 rounded-sm overflow-hidden border border-carbon-g20 shadow-sm flex-shrink-0">
+                                    <div class="w-1/3 h-full bg-[#f47b20]"></div>
+                                    <div class="w-1/3 h-full bg-[#00abe4]"></div>
+                                    <div class="w-1/3 h-full bg-[#0095d3]"></div>
+                                </div>
+                                PSD/IL/CDS
+                            </div>
+                        </div>
+                        <!-- 2025 Oct (Parish) -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center bg-carbon-g10 hover:bg-white transition-colors">
+                            <div class="col-span-2 hidden md:block"></div>
+                            <div class="col-span-4 hidden md:block"></div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Parish Assembly</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="flex w-6 h-6 mr-3 rounded-sm overflow-hidden border border-carbon-g20 shadow-sm flex-shrink-0">
+                                    <div class="w-1/3 h-full bg-[#f47b20]"></div>
+                                    <div class="w-1/3 h-full bg-[#00abe4]"></div>
+                                    <div class="w-1/3 h-full bg-[#0095d3]"></div>
+                                </div>
+                                PSD/IL/CDS
+                            </div>
+                        </div>
+
+                        <!-- 2025 May -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center hover:bg-white transition-colors">
+                            <div class="col-span-2 font-mono text-xs text-carbon-g60 mb-1 md:mb-0">May 2025</div>
+                            <div class="col-span-4 font-medium text-sm text-carbon-g100 mb-1 md:mb-0">Legislative Election</div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Lisbon</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="w-6 h-6 bg-[#00abe4] mr-3 rounded-sm border border-carbon-g20 shadow-sm flex-shrink-0"></div>
+                                Iniciativa Liberal
+                            </div>
+                        </div>
+
+                        <!-- 2024 Jun -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center hover:bg-white transition-colors">
+                            <div class="col-span-2 font-mono text-xs text-carbon-g60 mb-1 md:mb-0">Jun 2024</div>
+                            <div class="col-span-4 font-medium text-sm text-carbon-g100 mb-1 md:mb-0">European Parliament</div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">National</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="w-6 h-6 bg-[#00abe4] mr-3 rounded-sm border border-carbon-g20 shadow-sm flex-shrink-0"></div>
+                                Iniciativa Liberal
+                            </div>
+                        </div>
+
+                        <!-- 2024 Mar -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center hover:bg-white transition-colors">
+                            <div class="col-span-2 font-mono text-xs text-carbon-g60 mb-1 md:mb-0">Mar 2024</div>
+                            <div class="col-span-4 font-medium text-sm text-carbon-g100 mb-1 md:mb-0">Legislative Election</div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Lisbon</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="w-6 h-6 bg-[#00abe4] mr-3 rounded-sm border border-carbon-g20 shadow-sm flex-shrink-0"></div>
+                                Iniciativa Liberal
+                            </div>
+                        </div>
+
+                        <!-- 2022 Jan -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center hover:bg-white transition-colors">
+                            <div class="col-span-2 font-mono text-xs text-carbon-g60 mb-1 md:mb-0">Jan 2022</div>
+                            <div class="col-span-4 font-medium text-sm text-carbon-g100 mb-1 md:mb-0">Legislative Election</div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Lisbon</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="w-6 h-6 bg-[#00abe4] mr-3 rounded-sm border border-carbon-g20 shadow-sm flex-shrink-0"></div>
+                                Iniciativa Liberal
+                            </div>
+                        </div>
+
+                        <!-- 2021 Sep (Chamber) -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center hover:bg-white transition-colors">
+                            <div class="col-span-2 font-mono text-xs text-carbon-g60 mb-1 md:mb-0">Sep 2021</div>
+                            <div class="col-span-4 font-medium text-sm text-carbon-g100 mb-1 md:mb-0">Local Elections</div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Municipal Chamber</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="flex w-6 h-6 mr-3 rounded-sm overflow-hidden border border-carbon-g20 shadow-sm flex-shrink-0">
+                                    <div class="w-1/2 h-full bg-[#f47b20]"></div>
+                                    <div class="w-1/2 h-full bg-[#0095d3]"></div>
+                                </div>
+                                PSD/CDS
+                            </div>
+                        </div>
+                        <!-- 2021 Sep (Assembly) -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center bg-carbon-g10 hover:bg-white transition-colors">
+                            <div class="col-span-2 hidden md:block"></div>
+                            <div class="col-span-4 hidden md:block"></div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Municipal Assembly</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="flex w-6 h-6 mr-3 rounded-sm overflow-hidden border border-carbon-g20 shadow-sm flex-shrink-0">
+                                    <div class="w-1/2 h-full bg-[#f47b20]"></div>
+                                    <div class="w-1/2 h-full bg-[#0095d3]"></div>
+                                </div>
+                                PSD/CDS
+                            </div>
+                        </div>
+                        <!-- 2021 Sep (Parish) -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center bg-carbon-g10 hover:bg-white transition-colors">
+                            <div class="col-span-2 hidden md:block"></div>
+                            <div class="col-span-4 hidden md:block"></div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Parish Assembly</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="flex w-6 h-6 mr-3 rounded-sm overflow-hidden border border-carbon-g20 shadow-sm flex-shrink-0">
+                                    <div class="w-1/2 h-full bg-[#f47b20]"></div>
+                                    <div class="w-1/2 h-full bg-[#0095d3]"></div>
+                                </div>
+                                PSD/CDS
+                            </div>
+                        </div>
+
+                        <!-- 2021 Jan -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center hover:bg-white transition-colors">
+                            <div class="col-span-2 font-mono text-xs text-carbon-g60 mb-1 md:mb-0">Jan 2021</div>
+                            <div class="col-span-4 font-medium text-sm text-carbon-g100 mb-1 md:mb-0">Presidential Election</div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Round 1</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="w-6 h-6 bg-[#00abe4] mr-3 rounded-sm border border-carbon-g20 shadow-sm flex-shrink-0"></div>
+                                Tiago Mayan
+                            </div>
+                        </div>
+
+                        <!-- 2019 Oct -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center hover:bg-white transition-colors">
+                            <div class="col-span-2 font-mono text-xs text-carbon-g60 mb-1 md:mb-0">Oct 2019</div>
+                            <div class="col-span-4 font-medium text-sm text-carbon-g100 mb-1 md:mb-0">Legislative Election</div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Lisbon</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="w-6 h-6 bg-[#a3c644] mr-3 rounded-sm border border-carbon-g20 shadow-sm flex-shrink-0"></div>
+                                Livre
+                            </div>
+                        </div>
+
+                        <!-- 2019 May -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center hover:bg-white transition-colors">
+                            <div class="col-span-2 font-mono text-xs text-carbon-g60 mb-1 md:mb-0">May 2019</div>
+                            <div class="col-span-4 font-medium text-sm text-carbon-g100 mb-1 md:mb-0">European Parliament</div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">National</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="w-6 h-6 bg-[#a3c644] mr-3 rounded-sm border border-carbon-g20 shadow-sm flex-shrink-0"></div>
+                                Livre
+                            </div>
+                        </div>
+
+                        <!-- 2017 Oct (Chamber) -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center hover:bg-white transition-colors">
+                            <div class="col-span-2 font-mono text-xs text-carbon-g60 mb-1 md:mb-0">Oct 2017</div>
+                            <div class="col-span-4 font-medium text-sm text-carbon-g100 mb-1 md:mb-0">Local Elections</div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Municipal Chamber</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="w-6 h-6 bg-[#ff6699] mr-3 rounded-sm border border-carbon-g20 shadow-sm flex-shrink-0"></div>
+                                PS
+                            </div>
+                        </div>
+                        <!-- 2017 Oct (Assembly) -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center bg-carbon-g10 hover:bg-white transition-colors">
+                            <div class="col-span-2 hidden md:block"></div>
+                            <div class="col-span-4 hidden md:block"></div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Municipal Assembly</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="w-6 h-6 bg-[#a3c644] mr-3 rounded-sm border border-carbon-g20 shadow-sm flex-shrink-0"></div>
+                                Livre
+                            </div>
+                        </div>
+                        <!-- 2017 Oct (Parish) -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 border-b border-carbon-g20 items-center bg-carbon-g10 hover:bg-white transition-colors">
+                            <div class="col-span-2 hidden md:block"></div>
+                            <div class="col-span-4 hidden md:block"></div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Parish Assembly</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="w-6 h-6 bg-[#ff6699] mr-3 rounded-sm border border-carbon-g20 shadow-sm flex-shrink-0"></div>
+                                PS
+                            </div>
+                        </div>
+
+                        <!-- 2016 Jan -->
+                        <div class="flex flex-col md:grid md:grid-cols-12 p-3 px-6 md:px-8 items-center hover:bg-white transition-colors">
+                            <div class="col-span-2 font-mono text-xs text-carbon-g60 mb-1 md:mb-0">Jan 2016</div>
+                            <div class="col-span-4 font-medium text-sm text-carbon-g100 mb-1 md:mb-0">Presidential Election</div>
+                            <div class="col-span-3 text-xs text-carbon-g60 mb-1 md:mb-0">Round 1</div>
+                            <div class="col-span-3 flex items-center text-sm font-medium">
+                                <div class="w-6 h-6 bg-[#f47b20] mr-3 rounded-sm border border-carbon-g20 shadow-sm flex-shrink-0"></div>
+                                Marcelo R. de Sousa
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white text-carbon-g100 px-6 md:px-12 py-8 border-t border-carbon-g20">
+             <div class="flex flex-col md:flex-row justify-end items-center text-[10px] font-mono uppercase tracking-wider text-carbon-g60">
+                <a href="https://cesar.caldeira.cc" class="hover:text-accent transition-colors">&copy; 2026 César Caldeira</a>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+        function toggleAccordion(element) {
+            element.classList.toggle('active');
+            // Toggle icon
+            const icon = element.querySelector('.accordion-icon');
+            if (element.classList.contains('active')) {
+                icon.setAttribute('data-lucide', 'minus');
+            } else {
+                icon.setAttribute('data-lucide', 'plus');
+            }
+            lucide.createIcons();
+        }
+
+        function toggleInfo() {
+            const modal = document.getElementById('infoModal');
+            if (modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            } else {
+                modal.classList.add('active');
+            }
+        }
+
+        // Calculate Age
+        (function() {
+            const birthDate = new Date('1998-01-06');
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const m = today.getMonth() - birthDate.getMonth();
+            if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            document.getElementById('subject-age').innerText = age + " YEARS";
+        })();
+
+        // Intellectual Influences Data (with Frame Styles)
+        // Styles: 'frame-gold', 'frame-wood', 'frame-modern', 'frame-black-minimal', 'frame-silver', 'frame-bronze'
+        const influences = [
+            { name: "Immanuel Kant", tag: "Moral Philosophy", quote: "Two things fill the mind with ever new and increasing admiration and awe... the starry heavens above me and the moral law within me.", desc: "Establishing the moral foundations for cosmopolitanism and the categorical imperative.", source: "Critique of Practical Reason", img: "https://upload.wikimedia.org/wikipedia/commons/f/f2/Kant_gemaelde_3.jpg", frame: "frame-gold" },
+            { name: "Edmund Burke", tag: "Conservatism", quote: "The only thing necessary for the triumph of evil is for good men to do nothing.", desc: "The value of tradition, prudence, and the organic development of society against radical upheaval.", source: "Attributed", img: "https://upload.wikimedia.org/wikipedia/commons/9/93/Edmund_Burke2_c.jpg", frame: "frame-wood" },
+            { name: "Isaiah Berlin", tag: "Liberal Theory", quote: "Freedom for the wolves has often meant death to the sheep.", desc: "The distinction between positive and negative liberty and the reality of value pluralism.", source: "Two Concepts of Liberty", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Isaiah_Berlin_1983.jpg/640px-Isaiah_Berlin_1983.jpg", frame: "frame-modern" },
+            { name: "John Stuart Mill", tag: "Utilitarianism", quote: "The only purpose for which power can be rightfully exercised over any member of a civilized community... is to prevent harm to others.", desc: "Utilitarian liberty, the harm principle, and the marketplace of ideas.", source: "On Liberty", img: "https://upload.wikimedia.org/wikipedia/commons/9/99/John_Stuart_Mill_by_London_Stereoscopic_Company%2C_c1870.jpg", frame: "frame-wood" },
+            { name: "Raymond Aron", tag: "Sociology", quote: "The choice in politics is not between good and evil, but between the preferable and the detestable.", desc: "The committed observer; liberal skepticism and anti-totalitarianism.", source: "The Opium of the Intellectuals", img: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Raymond_Aron_1966.jpg", frame: "frame-modern" },
+            { name: "F. Lucas Pires", tag: "Christian Democracy", quote: "The center is not a geometric place, it is a moral attitude. It is the capacity to unite, to understand, and to moderate.", desc: "Advocacy for Christian Personalism and a decentralized, federalist Europe.", source: "Political Writings", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Coimbra_University_courtyard.jpg/640px-Coimbra_University_courtyard.jpg", frame: "frame-modern" },
+            { name: "Friedrich Hayek", tag: "Austrian Economics", quote: "The curious task of economics is to demonstrate to men how little they really know about what they imagine they can design.", desc: "Spontaneous order and the dangers of central planning.", source: "The Fatal Conceit", img: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Friedrich_Hayek_portrait.jpg", frame: "frame-wood" },
+            { name: "Thucydides", tag: "Realism", quote: "The strong do what they can and the weak suffer what they must.", desc: "The father of political realism and the dynamics of power.", source: "Peloponnesian War", img: "https://upload.wikimedia.org/wikipedia/commons/c/c8/Thucydides-bust-cutout.jpg", frame: "frame-gold" },
+            { name: "Hannah Arendt", tag: "Political Theory", quote: "The sad truth is that most evil is done by people who never make up their minds to be good or evil.", desc: "The banality of evil and the origins of totalitarianism.", source: "The Life of the Mind", img: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Hannah_Arendt_1975.jpg", frame: "frame-modern" },
+            { name: "Karl Popper", tag: "Philosophy of Science", quote: "We must plan for freedom, and not only for security, if for no other reason than that only freedom can make security secure.", desc: "The Open Society and the paradox of tolerance.", source: "The Open Society and Its Enemies", img: "https://upload.wikimedia.org/wikipedia/commons/4/43/Karl_Popper.jpg", frame: "frame-black-minimal" },
+            { name: "F. Sá Carneiro", tag: "Social Democracy", quote: "Politics is a service, not a career. It is a way of being, not a way of having.", desc: "Champion of the liberal wing of Social Democracy in Portugal.", source: "Interviews", img: "https://upload.wikimedia.org/wikipedia/commons/2/25/Francisco_sa_carneiro.jpg", frame: "frame-silver" },
+            { name: "Henry Kissinger", tag: "Realpolitik", quote: "Order without freedom, even if sustained by momentary exaltation, eventually creates its own counterpoise.", desc: "The balance of power and diplomatic order.", source: "A World Restored", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Henry_Kissinger_2009_portrait.jpg/640px-Henry_Kissinger_2009_portrait.jpg", frame: "frame-gold" },
+            { name: "Mário Soares", tag: "Socialist", quote: "True liberty exists only when there is liberty to change.", desc: "Civilian resistance to dictatorship and European integration.", source: "Selected Speeches", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/M%C3%A1rio_Soares_2016.jpg/640px-M%C3%A1rio_Soares_2016.jpg", frame: "frame-wood" },
+            { name: "Winston Churchill", tag: "Statesman", quote: "Democracy is the worst form of government – except for all the others that have been tried.", desc: "Resilience against tyranny and defense of parliamentary democracy.", source: "House of Commons", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Sir_Winston_Churchill_-_19086236948.jpg/640px-Sir_Winston_Churchill_-_19086236948.jpg", frame: "frame-gold" },
+            { name: "Alexander Hamilton", tag: "Federalism", quote: "Energy in the Executive is a leading character in the definition of good government.", desc: "State capacity, executive energy, and robust economic systems.", source: "Federalist No. 70", img: "https://upload.wikimedia.org/wikipedia/commons/0/05/Alexander_Hamilton_portrait_by_John_Trumbull_1806.jpg", frame: "frame-gold" },
+            { name: "A. de Tocqueville", tag: "Sociology", quote: "The health of a democratic society may be measured by the quality of functions performed by private citizens.", desc: "The tension between equality and liberty and the role of civil society.", source: "Democracy in America", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Alexis_de_Tocqueville_-_Th%C3%A9odore_Chass%C3%A9riau_-_Mus%C3%A9e_des_Beaux-Arts_de_la_ville_de_Paris_-_Petit_Palais.jpg/506px-Alexis_de_Tocqueville_-_Th%C3%A9odore_Chass%C3%A9riau_-_Mus%C3%A9e_des_Beaux-Arts_de_la_ville_de_Paris_-_Petit_Palais.jpg", frame: "frame-wood" },
+            { name: "John Rawls", tag: "Political Philosophy", quote: "Justice is the first virtue of social institutions, as truth is of systems of thought.", desc: "Justice as fairness and the veil of ignorance.", source: "A Theory of Justice", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Lady_Justice_statue_-_Old_Bailey_-_London%2C_UK_-_10_July_2023.jpg/480px-Lady_Justice_statue_-_Old_Bailey_-_London%2C_UK_-_10_July_2023.jpg", frame: "frame-modern" },
+            { name: "Mikhail Gorbachev", tag: "Reformist", quote: "The market is not an invention of capitalism. It has existed for centuries. It is an invention of civilization.", desc: "Transparency (Glasnost) and restructuring (Perestroika).", source: "Speech", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Mikhail_Gorbachev_1985.jpg/640px-Mikhail_Gorbachev_1985.jpg", frame: "frame-silver" },
+            { name: "M. Kemal Atatürk", tag: "Statesman", quote: "Peace at Home, Peace in the World.", desc: "Secularism, republicanism, and the transformative power of modernization.", source: "Motto of Turkey", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Mustafa_Kemal_Atat%C3%BCrk_colorized_portrait.jpg/640px-Mustafa_Kemal_Atat%C3%BCrk_colorized_portrait.jpg", frame: "frame-wood" },
+            { name: "Adam Smith", tag: "Economics", quote: "It is not from the benevolence of the butcher... that we expect our dinner, but from their regard to their own interest.", desc: "The invisible hand, moral sentiments, and market ethics.", source: "The Wealth of Nations", img: "https://upload.wikimedia.org/wikipedia/commons/0/0a/AdamSmith.jpg", frame: "frame-gold" },
+            { name: "Carl Sagan", tag: "Science", quote: "For me, it is far better to grasp the Universe as it really is than to persist in delusion.", desc: "Scientific skepticism and the cosmic perspective.", source: "The Demon-Haunted World", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Carl_Sagan_Planetary_Society.JPG/640px-Carl_Sagan_Planetary_Society.JPG", frame: "frame-black-minimal" },
+            { name: "Sun Yat Sen", tag: "Revolutionary", quote: "The revolution is not yet successful; comrades, you must still struggle.", desc: "Nationalism, Democracy, and Welfare as the foundation for a modern republic.", source: "Last Will", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Sun_Yat-sen_portrait_1920s.jpg/640px-Sun_Yat-sen_portrait_1920s.jpg", frame: "frame-wood" },
+            { name: "Francis Fukuyama", tag: "Political Science", quote: "Liberal democracy constitutes the endpoint of mankind's ideological evolution.", desc: "State building and the evolution of the liberal political order.", source: "The End of History", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Francis_Fukuyama_2015.jpg/640px-Francis_Fukuyama_2015.jpg", frame: "frame-modern" },
+            { name: "Anne Applebaum", tag: "Historian", quote: "Democracy is not natural... It has to be taught, learned, and defended.", desc: "Analysis of modern authoritarianism in the West.", source: "Twilight of Democracy", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Anne_Applebaum_in_2015.jpg/640px-Anne_Applebaum_in_2015.jpg", frame: "frame-modern" },
+            { name: "Donald Kagan", tag: "Historian", quote: "Peace does not keep itself.", desc: "The role of honor in strategic history and military strength.", source: "On the Origins of War", img: "https://upload.wikimedia.org/wikipedia/commons/d/da/Donald_Kagan_2010.jpg", frame: "frame-wood" },
+            { name: "Voltaire", tag: "Enlightenment", quote: "I disapprove of what you say, but I will defend to the death your right to say it.", desc: "Freedom of speech, religious toleration, and wit against dogma.", source: "Attributed", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Atelier_de_Nicolas_de_Largilli%C3%A8re%2C_portrait_de_Voltaire%2C_d%C3%A9tail_%28mus%C3%A9e_Carnavalet%29_-002.jpg/640px-Atelier_de_Nicolas_de_Largilli%C3%A8re%2C_portrait_de_Voltaire%2C_d%C3%A9tail_%28mus%C3%A9e_Carnavalet%29_-002.jpg", frame: "frame-gold" },
+            { name: "Konrad Adenauer", tag: "Statesman", quote: "We all live under the same sky, but we don't all have the same horizon.", desc: "Post-war reconciliation and the social market economy.", source: "Attributed", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Konrad_Adenauer.jpg/640px-Konrad_Adenauer.jpg", frame: "frame-wood" },
+            { name: "Nelson Mandela", tag: "Activist", quote: "It always seems impossible until it's done.", desc: "Reconciliation and the power of forgiveness.", source: "Attributed", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Nelson_Mandela-2008_%28edit%29.jpg/640px-Nelson_Mandela-2008_%28edit%29.jpg", frame: "frame-modern" },
+            { name: "Dwight D. Eisenhower", tag: "Statesman", quote: "Every gun that is made... signifies, in the final sense, a theft from those who hunger and are not fed.", desc: "Strategic patience and vigilance against the military-industrial complex.", source: "Chance for Peace", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Eisenhower_official.jpg/640px-Eisenhower_official.jpg", frame: "frame-wood" },
+            { name: "Machiavelli", tag: "Realism", quote: "It is better to be feared than loved, if you cannot be both.", desc: "Political realism and the nature of leadership.", source: "The Prince", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Portrait_of_Niccol%C3%B2_Machiavelli_by_Santi_di_Tito.jpg/640px-Portrait_of_Niccol%C3%B2_Machiavelli_by_Santi_di_Tito.jpg", frame: "frame-gold" },
+            { name: "Arthur Waldron", tag: "Historian", quote: "One cannot have a policy without a strategy, and one cannot have a strategy without an understanding of the enemy.", desc: "Strategic clarity on China and military history.", source: "The Great Wall of China", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Great_Wall_of_China_July_2006.JPG/800px-Great_Wall_of_China_July_2006.JPG", frame: "frame-modern" },
+            { name: "John F. Kennedy", tag: "Statesman", quote: "Ask not what your country can do for you – ask what you can do for your country.", desc: "Civic responsibility and idealism in foreign policy.", source: "Inaugural Address", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/John_F._Kennedy%2C_White_House_color_photo_portrait.jpg/640px-John_F._Kennedy%2C_White_House_color_photo_portrait.jpg", frame: "frame-silver" },
+            { name: "St. Augustine", tag: "Theology", quote: "Charity is no substitute for justice withheld.", desc: "The complex relationship between political power and divine grace.", source: "De Civitate Dei", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Saint_Augustine_by_Philippe_de_Champaigne.jpg/640px-Saint_Augustine_by_Philippe_de_Champaigne.jpg", frame: "frame-bronze" },
+            { name: "Kenneth Waltz", tag: "Neorealism", quote: "In anarchy, security is the highest end.", desc: "Structural Realism and the stability of bipolarity.", source: "Theory of International Politics", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/UN_General_Assembly_hall.jpg/800px-UN_General_Assembly_hall.jpg", frame: "frame-modern" }
+        ];
+
+        let currentInfluenceIndex = 0;
+
+        function rotateInfluence() {
+            const display = document.getElementById('influence-display');
+            
+            // 1. Fade Out & Slide slightly to the Left
+            display.classList.remove('translate-x-0', 'opacity-100');
+            display.classList.add('-translate-x-8', 'opacity-0');
+            
+            setTimeout(() => {
+                // 2. Update Content (while invisible)
+                const influence = influences[currentInfluenceIndex];
+                
+                const img = document.getElementById('inf-image');
+                img.style.display = 'block'; 
+                img.style.opacity = '1';
+                img.src = influence.img;
+
+                const frameEl = document.getElementById('inf-frame');
+                frameEl.className = 'relative shadow-2xl transition-all duration-700 bg-black flex items-center justify-center ' + influence.frame;
+
+                document.getElementById('inf-name').innerText = influence.name;
+                document.getElementById('inf-tag').innerText = influence.tag;
+                document.getElementById('inf-quote').innerText = influence.quote;
+                document.getElementById('inf-desc').innerText = influence.desc;
+                document.getElementById('inf-source').innerText = influence.source;
+
+                // 3. Reset Position to slightly Right (Prepare for entry)
+                // Disable transition to teleport to start position
+                display.style.transition = 'none';
+                display.classList.remove('-translate-x-8');
+                display.classList.add('translate-x-8');
+                
+                // Force a reflow/repaint
+                void display.offsetWidth;
+
+                // 4. Fade In & Slide to Center
+                // Re-enable transition
+                display.style.transition = ''; 
+                display.classList.remove('translate-x-8', 'opacity-0');
+                display.classList.add('translate-x-0', 'opacity-100');
+                
+                // Increment index
+                currentInfluenceIndex = (currentInfluenceIndex + 1) % influences.length;
+                
+            }, 700); // Match this timeout to the CSS transition duration
+        }
+
+        // Initialize and set interval
+        rotateInfluence(); // Initial load
+        setInterval(rotateInfluence, 15000); // 15s rotation
+
+    </script>
+</body>
+</html>
